@@ -79,7 +79,7 @@ def verify_qr_code(value):
             else:
                 current_attendee = attendee
                 waiting_for_barcode = True
-                message_to_display = "QR Code Scanned. Please scan or enter the barcode."
+                message_to_display = "QR Code Scanned, enter the barcode."
                 return attendee
         else:
             message_to_display = "Attendee Not Found"
@@ -107,7 +107,7 @@ def attach_barcode_to_attendee(barcode_value):
             if attendee:
                 attendee.BandID = barcode_value
                 session.commit()
-                message_to_display = "Barcode Scanned and Linked. Attendance Confirmed."
+                message_to_display = "Barcode Linked. Attendance Confirmed."
                 flash("Barcode attached successfully. Attendance confirmed.")
                 waiting_for_barcode = False
                 current_attendee = None
