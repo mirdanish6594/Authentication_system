@@ -30,6 +30,7 @@ class Attendees(Base):
     FirstName = Column(String(100))
     LastName = Column(String(100))
     Email = Column(String(100))
+    InstituteName = Column(String(100))
     ContactNumber = Column(String(15))
     BandID = Column(Integer)
 
@@ -149,7 +150,7 @@ def next_qr():
 
 # Generate frames from camera feed
 def gen_frames():
-    camera = cv2.VideoCapture(0)
+    camera = cv2.VideoCapture(5)
 
     if not camera.isOpened():
         logging.error("Error: Unable to access the camera.")
@@ -201,9 +202,10 @@ def process_frame(frame):
 
 # Display attendee info on the frame
 def display_attendee_info(frame, attendee):
-    cv2.putText(frame, f"ID: {attendee.UID}", (10, 150), cv2.FONT_HERSHEY_SIMPLEX, 1, (0, 255, 0), 2)
-    cv2.putText(frame, f"Name: {attendee.FirstName} {attendee.LastName}", (10, 180), cv2.FONT_HERSHEY_SIMPLEX, 1, (0, 255, 0), 2)
-    cv2.putText(frame, f"Email: {attendee.Email}", (10, 210), cv2.FONT_HERSHEY_SIMPLEX, 1, (0, 255, 0), 2)
+    cv2.putText(frame, f"ID: {attendee.UID}", (10, 150), cv2.FONT_HERSHEY_SIMPLEX, 1, (255, 0, 0), 2)
+    cv2.putText(frame, f"Name: {attendee.FirstName} {attendee.LastName}", (10, 180), cv2.FONT_HERSHEY_SIMPLEX, 1, (255, 0, 0), 2)
+    cv2.putText(frame, f"Email: {attendee.Email}", (10, 210), cv2.FONT_HERSHEY_SIMPLEX, 1, (255, 0, 0), 2)
+    cv2.putText(frame, f"InstituteName: {attendee.InstituteName}", (10, 240), cv2.FONT_HERSHEY_SIMPLEX, 1, (255, 0, 0), 2)
     return frame
 
 @app.route('/video_feed')
