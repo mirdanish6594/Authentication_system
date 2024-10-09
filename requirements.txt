@@ -1,0 +1,6 @@
+Flask
+Flask-SQLAlchemy
+opencv-python
+requests
+pyzbar
+psycopg2  # For PostgreSQL connection

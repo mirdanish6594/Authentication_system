@@ -1,0 +1,28 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Display Information</title>
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            margin: 20px;
+        }
+        h1 {
+            color: #333;
+        }
+        img {
+            width: 100%; /* Make the QR code image responsive */
+            max-width: 400px; /* Set a max-width */
+            height: auto; /* Maintain aspect ratio */
+        }
+    </style>
+</head>
+<body>
+    <h1>Display Information</h1>
+    <img src="{{ url_for('static', filename=filename) }}" alt="QR Code Frame">
+    <pre>{{ qr_data }}</pre>
+    <a href="/">Back to Entry Status</a>
+</body>
+</html>
