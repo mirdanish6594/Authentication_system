@@ -15,7 +15,7 @@ app.secret_key = 'your_secret_key'
 logging.basicConfig(level=logging.INFO)
 
 # Database setup for MySQL
-engine = create_engine('mysql+pymysql://techvaganza_a:Geze89828982@14.139.61.137/techvaganza_test')
+engine = create_engine('your database credentials')
 session_factory = sessionmaker(bind=engine)
 Session = scoped_session(session_factory)
 
