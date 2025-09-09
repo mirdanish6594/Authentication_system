@@ -1,0 +1,45 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Gate Entry Scanner</title>
+    <link rel="stylesheet" href="{{ url_for('static', filename='css/style.css') }}">
+</head>
+<body>
+    <div class="container">
+        <header>
+            <h1>Gate Entry Authentication</h1>
+            <p>Scan QR code, then link barcode to confirm entry.</p>
+        </header>
+
+        <a href="{{ url_for('dashboard') }}" class="btn btn-info dashboard-link">View Attendance Dashboard</a>
+
+        <div class="video-container">
+            <img src="{{ url_for('video_feed') }}" alt="Video Feed" class="video-feed">
+        </div>
+
+        {% with messages = get_flashed_messages(with_categories=true) %}
+            {% if messages %}
+                <div class="flash-messages">
+                {% for category, message in messages %}
+                    <div class="flash flash-{{ category }}">{{ message }}</div>
+                {% endfor %}
+                </div>
+            {% endif %}
+        {% endwith %}
+        
+        <div class="controls">
+            <form action="{{ url_for('attach_barcode_manual') }}" method="post" class="manual-form">
+                <label for="barcode">Manual Barcode Entry:</label>
+                <input type="text" id="barcode" name="barcode" placeholder="Enter barcode if scan fails" required>
+                <button type="submit" class="btn btn-primary">Link Barcode</button>
+            </form>
+
+            <form action="{{ url_for('reset') }}" method="post" class="reset-form">
+                <button type="submit" class="btn btn-secondary">Reset / Next Person</button>
+            </form>
+        </div>
+    </div>
+</body>
+</html>

@@ -1,0 +1,81 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Attendance Dashboard</title>
+    <link rel="stylesheet" href="{{ url_for('static', filename='css/style.css') }}">
+</head>
+<body>
+    <div class="container dashboard-container">
+        <header>
+            <h1>Attendance Dashboard</h1>
+            <p>Live status of all registered attendees.</p>
+        </header>
+
+        <a href="{{ url_for('index') }}" class="btn btn-secondary back-btn">← Back to Scanner</a>
+
+        <div class="table-container">
+            <h2>Checked-In Attendees ({{ present_attendees|length }})</h2>
+            <table>
+                <thead>
+                    <tr>
+                        <th>ID</th>
+                        <th>First Name</th>
+                        <th>Last Name</th>
+                        <th>Institute</th>
+                        <th>Status</th>
+                        <th>Assigned Barcode</th>
+                    </tr>
+                </thead>
+                <tbody>
+                    {% for attendee in present_attendees %}
+                    <tr>
+                        <td>{{ attendee.id }}</td>
+                        <td>{{ attendee.first_name }}</td>
+                        <td>{{ attendee.last_name }}</td>
+                        <td>{{ attendee.institute }}</td>
+                        <td class="status-present">Present</td>
+                        <td>{{ attendee.band_id }}</td>
+                    </tr>
+                    {% else %}
+                    <tr>
+                        <td colspan="6">No attendees have checked in yet.</td>
+                    </tr>
+                    {% endfor %}
+                </tbody>
+            </table>
+        </div>
+
+        <div class="table-container">
+            <h2>Absent Attendees ({{ absent_attendees|length }})</h2>
+            <table>
+                <thead>
+                    <tr>
+                        <th>ID</th>
+                        <th>First Name</th>
+                        <th>Last Name</th>
+                        <th>Institute</th>
+                        <th>Status</th>
+                    </tr>
+                </thead>
+                <tbody>
+                    {% for attendee in absent_attendees %}
+                    <tr>
+                        <td>{{ attendee.id }}</td>
+                        <td>{{ attendee.first_name }}</td>
+                        <td>{{ attendee.last_name }}</td>
+                        <td>{{ attendee.institute }}</td>
+                        <td class="status-absent">Absent</td>
+                    </tr>
+                     {% else %}
+                    <tr>
+                        <td colspan="5">All registered attendees have checked in.</td>
+                    </tr>
+                    {% endfor %}
+                </tbody>
+            </table>
+        </div>
+    </div>
+</body>
+</html>
