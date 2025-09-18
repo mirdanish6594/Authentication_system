@@ -33,18 +33,20 @@ numpy==1.24.3
 
 ### 1. Clone the Repository
 
+```
 git clone https://github.com/mirdanish6594/Authentication_system.git
 cd Authentication_system
+```
 
 ### 2. Create Virtual Environment
-
+```
 python -m venv venv
 source venv/bin/activate  # On Windows: venv\Scripts\activate
-
+```
 ### 3. Install Dependencies
-
+```
 pip install -r requirements.txt
-
+```
 # For enhanced QR detection (optional):
 # macOS: brew install zbar
 # Ubuntu: sudo apt-get install libzbar0
