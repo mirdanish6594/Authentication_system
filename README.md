@@ -72,7 +72,7 @@ python
 
 ### Starting the Application
 
-python app.py
+```python app.py```
 
 Navigate to `http://127.0.0.1:5000`
 
@@ -126,13 +126,13 @@ python -c "import cv2; cap = cv2.VideoCapture(0); print('Camera OK' if cap.isOpe
 * Check that the QR code format contains a numeric ID.
 
 ### pyzbar Installation (Optional Enhancement)
-
+```
 # macOS
-```brew install zbar```
+brew install zbar
 
 # Ubuntu
 sudo apt-get install libzbar0
-
+```
 ## 🚀 Production Deployment
 
 ### Using Gunicorn
