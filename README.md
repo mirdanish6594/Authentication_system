@@ -46,11 +46,11 @@ source venv/bin/activate  # On Windows: venv\Scripts\activate
 ### 3. Install Dependencies
 ```
 pip install -r requirements.txt
-```
+
 # For enhanced QR detection (optional):
 # macOS: brew install zbar
 # Ubuntu: sudo apt-get install libzbar0
-
+```
 ### 4. Database Setup
 
 Configure your database in `config.py`:
